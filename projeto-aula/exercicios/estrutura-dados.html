@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <title>Projeto Livraria</title>
+    </head>
+    <body>
+        <h1>Estrutura de Dados</h1>
+        <div>
+            <h2>Função recursiva</h2>
+            <div id="recursiva"></div>
+            <h2>Recursiva lendo Array</h2>
+            <div id="paises"></div>
+        </div>
+        <div>
+            <h2>Filas</h2>
+            <p>Proxímo Cliente</p>
+            <p id="next"></p>
+            <p>Usuários Atendidos</p>
+            <ul id="result"></ul>
+            <p>Usuários aguardando suporte</p>
+            <ul id="users"></ul>
+            <button id="btAtende">Confirmar</button>
+            <button id="darBaixa">Dar baixa</button>
+        </div>
+    </body>
+    <script>
+        let n=20
+        let x=0
+        let pais=["Brasil","França","Alemanha","Argentina"]
+
+        function paises(obj){
+            if(x < pais.length){
+                obj.innerHTML+=pais[x] + "<br />"
+                x++
+                paises(document.querySelector("#paises"))
+            }
+        }
+        paises(document.querySelector("#paises"))
+
+        function recursiva(obj){
+            if(n>1){
+                n--
+                obj.innerHTML+=n + "<br />"
+                recursiva(document.querySelector("#recursiva"))
+            } 
+        }
+        recursiva(document.querySelector("#recursiva")) 
+        
+//Filas = QUEUES
+
+        let fila = []
+        let usuariosAtendidos=[]
+        fila.push(25)
+        fila.push(34)
+        fila.push(9)
+//fila criada
+        console.log(fila)
+        console.log(fila[0])
+        usuariosAtendidos.push(fila[0])
+        fila.shift()
+        console.log("Array após a primeira chamada", fila)
+
+        console.log(fila[0])
+        usuariosAtendidos.push(fila[0])
+        fila.shift()
+        console.log("Array após a segunda chamada", fila)
+        console.log("Usuários Atendidos" ,usuariosAtendidos)
+
+        listaUsers=["Alan","Debora","Francis","Georgia","Osmartas"]
+        listaResult=[]
+        
+        function users(){
+            document.querySelector("#users").innerHTML=""
+            for(var i=0;i<listaUsers.length;i++){
+                document.querySelector("#users").innerHTML+="<li>" + listaUsers[i] + "</li>"
+            }
+            listaUsers.length > 0 ? document.querySelector("#next").innerHTML=listaUsers[0] : null
+        }
+
+        users()
+
+        document.querySelector("#btAtende").onclick=function(){ darBaixa()}
+
+        function darBaixa(){
+            if(listaUsers.length > 0){
+            listaResult.push(listaUsers[0])
+            document.querySelector("#result").innerHTML=""
+            for(var i=0;i<listaResult.length;i++){
+                document.querySelector("#result").innerHTML+="<li>" + listaResult[i] + "</li>"
+            }
+            listaUsers.shift()
+            users()
+            } else{
+                document.querySelector("#next").innerHTML="<b>Todos os clientes foram atendidos</b>"
+            }
+        }
+        let intervaloBaixa
+        document.querySelector("#darBaixa").onclick=function(){
+        intervaloBaixa=setInterval(function(){darBaixa()},2000)
+        }
+        //para encerrar o intervalo usar clearInterval(intervaloBaixa)
+    </script>
+</html>

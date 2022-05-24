@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Trabalhando com objetos</title>
+</head>
+<body>
+    <section>
+        <h1>Trabalhando com objetos</h1>
+    </section>
+</body>
+<script>
+    let carro = {
+        portas:4,
+        cor:'branco',
+        modelo:'basic',
+        tetoSolar:false
+    }
+    
+    if(carro.tetoSolar == false){
+        console.log("0 modelo "+ carro.modelo + " não tem teto solar")
+    }
+    console.log(carro.portas)
+    console.log(carro.cor)
+
+    let carro2 = {
+        portas:4,
+        cor:['branco','preto','prata'],
+        modelo:'plus',
+        tetoSolar:true
+    }
+    
+    if(carro2.tetoSolar == false){
+        console.log("0 modelo "+ carro2.modelo + " não tem teto solar")
+    }else{
+        console.log("0 modelo "+ carro2.modelo + " tem teto solar")
+    }
+    console.log("O modelo "+ carro2.modelo+ " temos nas cores "+ carro2.cor)
+
+    let pessoa = {
+        nome: "Fellipe Vieira",
+        idade: 21,
+        preferMusica: "Funk",
+                certificados:{
+                    nome:"Node Js",
+                    ano:2021
+                    
+                },
+        falar: function(pais,profissao,estiloMusica){
+            this.preferMusica = estiloMusica
+            console.log("Olá meu nome é: "+ this.nome + " tenho " + this.idade + " anos." + "Trabalho no " + pais + " como " + profissao + " gosto de ouvir " + this.preferMusica)
+        }
+    }
+
+    let nomePessoa = pessoa["nome"]
+    console.log(pessoa.certificados.nome,pessoa.certificados.ano)
+    console.log(nomePessoa.length)
+    console.log(pessoa.preferMusica)
+    const estiloMusica=pessoa.preferMusica
+    pessoa.falar("Afeganistão","Professor",pessoa.preferMusica)
+
+    pessoa.nome="Renato"
+    pessoa.idade=45
+    pessoa.falar("Havai","Salva Vidas","Sertanejo")
+    pessoa.falar("Havai","Salva Vidas", estiloMusica)
+
+//////////////////////////////////////
+
+    let carrinho = {
+        multiplicarTelas:{
+            uma:1.07,
+            duas:1.14,
+            tres:1.21,
+            quatro:1.28,
+            cinco:1.35
+        },
+        excluirItem:
+        montarResumo
+
+    }
+    let cupom = {
+           gerarCupom:{
+            cupom:0.10,
+            cupom20:0.20,
+            aluguel:0.20
+           }
+        }
+  
+
+</script>
+</html>
